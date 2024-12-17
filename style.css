@@ -5,7 +5,7 @@
 }
 
 * {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lora', serif;
 }
 
 a {
@@ -17,8 +17,8 @@ header {
 }
 
 body {
-  max-width: 850px;
-  margin: 0px auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 body.wide {
@@ -26,17 +26,16 @@ body.wide {
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 0.3em;
 }
 
 h1 .title-main  {
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   display: flex;
   justify-content: center;
   gap: 0.3em;
-  /*margin-bottom: 0.2em;*/
 }
 
 h1 .title-main > img {
@@ -63,6 +62,15 @@ header .conference {
   color: #666;
 }
 
+p, figcaption {
+  line-height: 1.5;
+  font-size: 1.1em;
+}
+
+strong {
+  font-weight: 550;
+}
+
 figure {
   margin: 1rem 0px 2rem 0px;
 }
@@ -75,7 +83,6 @@ figure {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.8em;
 }
 
 .authors > * {
@@ -87,11 +94,11 @@ figure {
 }
 
 .authors .author-name {
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.1em;
   display: block;
   text-align: center;
-  margin-bottom: 0.2em;
+  /*margin-bottom: 0.2em;*/
 }
 
 .authors .author-name a {
@@ -105,9 +112,12 @@ figure {
   text-decoration: underline;
 }
 
-.authors .author-affiliation {
+.author-affiliation {
+  font-weight: 500;
+  font-size: 1.2em;
   display: block;
   text-align: center;
+  margin-bottom: 0.8em;
 }
 
 .links {
@@ -128,7 +138,7 @@ figure {
   padding-left: calc(1em + .25em);
   padding-right: calc(1em + .25em);
   font-size: 1em;
-  background-color: rgb(59 130 246);
+  background-color: rgb(0 0 0);
   font-weight: 600;
   border-color: transparent;
   color: #fff;
@@ -238,8 +248,9 @@ pre {
   word-wrap: normal;
 
   background-color: #f5f5f5;
-  color: #4a4a4a;
-  font-size: .875em;
+  color: black;
+  font-size: .9em;
+  line-height: 1.3;
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
   font-family: monospace;
@@ -249,7 +260,7 @@ pre {
 
 pre code {
   background-color: transparent;
-  font-size: 1em;
+  font-size: 1.4em;
   padding: 0;
   word-break: normal;
   font-weight: 400;

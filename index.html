@@ -13,13 +13,15 @@
     <meta name="keywords" content="nexus-splats,3dgs,official,code"/>
     <meta name="author" content="Yuzhou Tang"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet">
 </head>
 <body>
 <header>
     <h1>
-        <span class="title-main"><span>NexusSplats</span></span>
-        <span class="title-small">Efficient 3D Gaussian Splatting in the Wild</span>
+        <span class="title-main">
+            <span>NexusSplats: Efficient 3D Gaussian Splatting in the Wild</span>
+        </span>
     </h1>
 <!--    <div class="conference">CVPR 2025</div>-->
 </header>
@@ -50,6 +52,9 @@
         </span>
     </div>
 </div>
+<div class="author-affiliation">
+    <span>Xiamen University</span>
+</div>
 <div class="links">
     <a class="button" href="https://arxiv.org/pdf/2411.14514"><i class="ti ti-file-type-pdf"></i> Paper</a>
     <a class="button" href="https://github.com/juliantang324/NexusSplats"><i class="ti ti-brand-github-filled"></i> Code</a>
@@ -58,35 +63,25 @@
     <source src="/assets/cover-trevi.mp4" type="video/mp4">
 </video>
 <p class="justify" style="font-size: 1rem;margin: 0 0 0.4rem 0; text-align-last: center">
-    <strong>NexusSplats</strong> enables efficient and finer 3D scene reconstruction under complex lighting and occlusion.
+    <em>NexusSplats</em> enables efficient and finer 3D scene reconstruction under complex lighting and occlusion.
 </p>
 
 <section class="abstract">
     <h2>Abstract</h2>
     <p>
-        While 3D Gaussian Splatting (3DGS) has recently demonstrated remarkable rendering quality and efficiency in 3D
-        scene reconstruction, it struggles with varying lighting conditions and incidental occlusions in real-world
-        scenarios. To accommodate varying lighting conditions, existing 3DGS extensions apply color mapping to the
-        massive Gaussian primitives with individually optimized appearance embeddings. To handle occlusions, they
-        predict pixel-wise uncertainties via 2D image features for occlusion capture. Nevertheless, such massive color
-        mapping and pixel-wise uncertainty prediction strategies suffer from not only additional computational costs
-        but also coarse-grained lighting and occlusion handling. In this work, we propose a nexus kernel-driven
-        approach, termed NexusSplats, for efficient and finer 3D scene reconstruction under complex lighting and
-        occlusion conditions. In particular, NexusSplats leverages a novel light decoupling strategy where
-        appearance embeddings are optimized based on nexus kernels instead of massive Gaussian primitives, thus
-        accelerating reconstruction speeds while ensuring local color consistency for finer textures. Additionally, a
-        Gaussian-wise uncertainty mechanism is developed, aligning 3D structures with 2D image features for fine-grained
-        occlusion handling. Experimental results demonstrate that NexusSplats achieves state-of-the-art rendering
-        quality while reducing reconstruction time by up to 70.4% compared to the current best in quality.
+        we propose a nexus kernel-driven approach, called <em>NexusSplats</em>, for efficient and finer 3D scene reconstruction
+        under complex lighting and occlusion conditions. Experimental results demonstrate that NexusSplats achieves
+        state-of-the-art rendering quality and reduces reconstruction time in different scenes by up to 70.4% compared
+        to the current best method in quality.
     </p>
-    <figure style="margin: 0">
+    <figure style="margin-top: 2em">
         <img src="assets/overview.png" alt="NexusSplats overview"
              style="width: 100%; margin: 1em auto 0.3em auto; display: block;"/>
-        <figcaption>
-            <em>Left:</em> From the reference image, we extract light embedding and transient embedding to capture
-            global lighting and occlusion conditions. <em>Middle:</em> Our nexus kernels enable hierarchical management
+        <figcaption style="margin-top: 1em">
+            <strong>Overview of <em>NexusSplats</em></strong>. <strong>Left:</strong> From the reference image, we extract light embedding and transient embedding to capture
+            global lighting and occlusion conditions. <strong>Middle:</strong> Our nexus kernels enable hierarchical management
             of Gaussian primitives, allowing efficient local adaptations to different lighting and occlusion conditions
-            via the light decoupling module and the uncertainty splatting module. <em>Right:</em> Through tile
+            via the light decoupling module and the uncertainty splatting module. <strong>Right:</strong> Through tile
             rasterization, we project raw colors, mapped colors, and uncertainties onto 2D visible planes. A boundary
             penalty finally refines the filtering mask in handling occlusions.
         </figcaption>
@@ -148,11 +143,12 @@
     <h2>Concurrent works</h2>
     <p class="justify">
         There are several concurrent works that also aim to extend 3DGS to handle in-the-wild data:
-    <ul>
-        <li><a href="https://arxiv.org/pdf/2407.08447">WildGaussians: 3D Gaussian Splatting in the Wild</a></li>
-        <li><a href="https://arxiv.org/pdf/2403.15704">Gaussian in the Wild: 3D Gaussian Splatting for Unconstrained
-            Image Collections</a></li>
-    </ul>
+        <ul>
+            <li><a href="https://arxiv.org/pdf/2407.08447">WildGaussians: 3D Gaussian Splatting in the Wild</a></li>
+            <li><a href="https://arxiv.org/pdf/2403.15704">Gaussian in the Wild: 3D Gaussian Splatting for Unconstrained
+                Image Collections</a></li>
+        </ul>
+    </p>
 </section>
 <section>
     <h2>Acknowledgements</h2>
