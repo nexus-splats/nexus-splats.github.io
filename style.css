@@ -65,6 +65,7 @@ header .conference {
 p, figcaption {
   line-height: 1.5;
   font-size: 1.1em;
+  text-align: justify;
 }
 
 strong {
