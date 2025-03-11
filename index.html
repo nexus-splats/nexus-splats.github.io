@@ -13,7 +13,8 @@
     <meta name="keywords" content="nexus-splats,3dgs,official,code"/>
     <meta name="author" content="Yuzhou Tang"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +25,7 @@
             <span>NexusSplats: Efficient 3D Gaussian Splatting in the Wild</span>
         </span>
     </h1>
-<!--    <div class="conference">CVPR 2025</div>-->
+    <!--    <div class="conference">CVPR 2025</div>-->
 </header>
 <div class="authors">
     <div class="author">
@@ -64,99 +65,103 @@
     <source src="/assets/cover-trevi.mp4" type="video/mp4">
 </video>
 <p class="justify" style="margin: 0.2em 0 0.4rem 0; text-align-last: center">
-    <strong>NexusSplats</strong> enables efficient and fine-grained 3D scene reconstruction under complex lighting and occlusion conditions.
+    <strong>NexusSplats</strong> enables efficient and fine-grained 3D scene reconstruction under complex lighting and
+    occlusion conditions.
 </p>
 
 <section class="abstract">
     <h2>Abstract</h2>
     <p>
-        Photorealistic 3D reconstruction of unstructured real-world scenes remains challenging due to complex illumination variations and transient occlusions.
-        Existing methods based on Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS) struggle with inefficient light decoupling and structure-agnostic occlusion handling.
-        To address these limitations, we propose <strong>NexusSplats</strong>, an approach tailored for efficient and high-fidelity 3D scene reconstruction under complex lighting and occlusion conditions.
-        In particular, NexusSplats leverages a <strong>hierarchical light decoupling</strong> strategy that performs centralized appearance learning, efficiently and effectively decoupling varying lighting conditions.
-        Furthermore, a <strong>structure-aware occlusion handling</strong> mechanism is developed, establishing a nexus between 3D and 2D structures for fine-grained occlusion handling.
-        Experimental results demonstrate that NexusSplats achieves state-of-the-art rendering quality and reduces the number of total parameters by 65.4%, leading to 2.7× faster reconstruction.
+        Photorealistic 3D reconstruction of unstructured real-world scenes remains challenging due to complex
+        illumination variations and transient occlusions.
+        Existing methods based on Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS) struggle with
+        inefficient light decoupling and structure-agnostic occlusion handling.
+        To address these limitations, we propose <strong>NexusSplats</strong>, an approach tailored for efficient and
+        high-fidelity 3D scene reconstruction under complex lighting and occlusion conditions.
+        In particular, NexusSplats leverages a <strong>hierarchical light decoupling</strong> strategy that performs
+        centralized appearance learning, efficiently and effectively decoupling varying lighting conditions.
+        Furthermore, a <strong>structure-aware occlusion handling</strong> mechanism is developed, establishing a nexus
+        between 3D and 2D structures for fine-grained occlusion handling.
+        Experimental results demonstrate that NexusSplats achieves state-of-the-art rendering quality and reduces the
+        number of total parameters by 65.4%, leading to 2.7× faster reconstruction.
     </p>
     <figure style="margin-top: 2em">
         <img src="assets/overview.png" alt="NexusSplats overview"
              style="width: 100%; margin: 1em auto 0.3em auto; display: block;"/>
         <figcaption style="margin-top: 1em">
             <strong>Overview of NexusSplats.</strong> Our framework operates in three stages:
-            <em>First</em>, the <strong>Hierarchical Gaussian Management</strong> organizes 3D Gaussians into dynamic <em>nexus kernels</em>, which generate Gaussian attributes and perform <strong>Centralized Appearance Learning</strong> and <strong>Uncertainty Propagation</strong>.
-            <em>Second</em>, a raw image, a mapped image, and an uncertainty mask are rendered though tile rasterization.
+            <em>First</em>, the <strong>Hierarchical Gaussian Management</strong> organizes 3D Gaussians into dynamic
+            <em>nexus kernels</em>, which generate Gaussian attributes and perform <strong>Centralized Appearance
+            Learning</strong> and <strong>Uncertainty Propagation</strong>.
+            <em>Second</em>, a raw image, a mapped image, and an uncertainty mask are rendered though tile
+            rasterization.
             <em>Third</em>, the <strong>Boundary-Aware Refinement</strong> corrects misclassified scene boundaries.
             The system optimizes via a combination of color loss and uncertainty loss.
         </figcaption>
     </figure>
 </section>
-<!--<section>-->
-<!--    <h2>Light Decoupling</h2>-->
-<!--    <p>-->
-<!--        We propose a light decoupling strategy to optimize appearance embeddings based on nexus kernels instead of-->
-<!--        massive Gaussian primitives. This strategy accelerates reconstruction speeds while ensuring local color-->
-<!--        consistency for finer textures.-->
-<!--    </p>-->
-<!--&lt;!&ndash;    <video class="video" style="aspect-ratio: 1920/1080" loop muted autoplay>&ndash;&gt;-->
-<!--&lt;!&ndash;        <source src="/assets/ours-branden.mp4" type="video/mp4">&ndash;&gt;-->
-<!--&lt;!&ndash;    </video>&ndash;&gt;-->
-<!--    <figure>-->
-<!--        <div class="video-wrapper">-->
-<!--            <video class="video" style="aspect-ratio: 1920/1080; clip-path: inset(150px 80px 0px 180px);" loop muted autoplay>-->
-<!--                <source src="/assets/ours-branden.mp4" type="video/mp4">-->
-<!--            </video>-->
-<!--&lt;!&ndash;            <span class="video-label video-label-with-fps">&ndash;&gt;-->
-<!--&lt;!&ndash;            <span>3DGS<div class="video-fps">FPS: 7.7</div></span>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span>WildGaussians<div class="video-fps">FPS: 9.6</div></span>&ndash;&gt;-->
-<!--&lt;!&ndash;          </span>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </figure>-->
-<!--    <figure>-->
-<!--        <div class="video-wrapper">-->
-<!--            <video class="video" style="aspect-ratio: 1920/1080; clip-path: inset(150px 100px 0px 200px);" loop muted autoplay>-->
-<!--                <source src="/assets/ours-sacre.mp4" type="video/mp4">-->
-<!--            </video>-->
-<!--&lt;!&ndash;            <video class="video-compare" style="aspect-ratio: 1920/1080" loop muted>&ndash;&gt;-->
-<!--&lt;!&ndash;                <source src="/assets/kplanes-wg-trevi.mp4" type="video/mp4">&ndash;&gt;-->
-<!--&lt;!&ndash;            </video>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span class="video-label video-label-with-fps">&ndash;&gt;-->
-<!--&lt;!&ndash;            <span>K-Planes<div class="video-fps">FPS: 0.15</div></span>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span>WildGaussians<div class="video-fps">FPS: 6.5</div></span>&ndash;&gt;-->
-<!--&lt;!&ndash;          </span>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </figure>-->
-<!--    <figure>-->
-<!--        <div class="video-wrapper">-->
-<!--            <video class="video" style="aspect-ratio: 1920/1080; clip-path: inset(100px 80px 0px 150px);" loop muted autoplay>-->
-<!--                <source src="/assets/ours-trevi.mp4" type="video/mp4">-->
-<!--            </video>-->
-<!--&lt;!&ndash;            <video class="video-compare" style="aspect-ratio: 1920/1080" loop muted>&ndash;&gt;-->
-<!--&lt;!&ndash;                <source src="/assets/nerfwr-wg-sacrecoeur.webm" type="video/webm">&ndash;&gt;-->
-<!--&lt;!&ndash;                <source src="/assets/nerfwr-wg-sacrecoeur.mp4" type="video/mp4">&ndash;&gt;-->
-<!--&lt;!&ndash;            </video>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span class="video-label video-label-with-fps">&ndash;&gt;-->
-<!--&lt;!&ndash;            <span>NeRF-W (reimpl.)<div class="video-fps">FPS: 0.004</div></span>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span>WildGaussians<div class="video-fps">FPS: 10.6</div></span>&ndash;&gt;-->
-<!--&lt;!&ndash;          </span>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </figure>-->
-<!--</section>-->
+<section>
+    <h2>Hierarchical Light Decoupling</h2>
+    <p>
+        We propose <strong>Hierarchical Light Decoupling</strong> that leverages <em>nexus kernels</em> to
+        hierarchically manage 3D Gaussians and perform centralized appearance learning for efficient and effective light
+        condition decoupling.
+        This design effectively reduces parameter redundancy while achieving superior texture fidelity under varying
+        illumination.
+    </p>
+    <figure>
+        <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 1400/970" loop muted>
+                <source src="/assets/comparison/trevi.mp4" type="video/mp4">
+            </video>
+            <span class="video-label video-label-with-fps">
+            <span>WildGauss<div class="video-fps">GPU hours: 26.48</div><div class="video-fps">FPS: 7.5</div></span>
+            <span>NexusSplats<div class="video-fps">GPU hours: 7.83</div><div class="video-fps">FPS: 11.5</div></span>
+          </span>
+        </div>
+    </figure>
+    <figure>
+        <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 1100/670" loop muted>
+                <source src="/assets/comparison/sacre.mp4" type="video/mp4">
+            </video>
+            <span class="video-label video-label-with-fps">
+            <span>WildGauss<div class="video-fps">GPU hours: 14.20</div><div class="video-fps">FPS: 7.5</div></span>
+            <span>NexusSplats<div class="video-fps">GPU hours: 6.43</div><div class="video-fps">FPS: 11.5</div></span>
+          </span>
+        </div>
+    </figure>
+    <figure>
+        <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 1350/750" loop muted>
+                <source src="/assets/comparison/branden.mp4" type="video/mp4">
+            </video>
+            <span class="video-label video-label-with-fps">
+            <span>WildGauss<div class="video-fps">GPU hours: 14.93</div><div class="video-fps">FPS: 7.5</div></span>
+            <span>NexusSplats<div class="video-fps">GPU hours: 6.17</div><div class="video-fps">FPS: 11.5</div></span>
+          </span>
+        </div>
+    </figure>
+</section>
 
 <section>
     <h2>Concurrent works</h2>
     <p class="justify">
         There are several concurrent works that also aim to extend 3DGS to handle in-the-wild data:
-        <ul>
-            <li><a href="https://arxiv.org/pdf/2407.08447">WildGaussians: 3D Gaussian Splatting in the Wild</a></li>
-            <li><a href="https://arxiv.org/pdf/2403.15704">Gaussian in the Wild: 3D Gaussian Splatting for Unconstrained
-                Image Collections</a></li>
-        </ul>
+    <ul>
+        <li><a href="https://arxiv.org/pdf/2407.08447">WildGaussians: 3D Gaussian Splatting in the Wild</a></li>
+        <li><a href="https://arxiv.org/pdf/2403.15704">Gaussian in the Wild: 3D Gaussian Splatting for Unconstrained
+            Image Collections</a></li>
+    </ul>
     </p>
 </section>
 <section>
     <h2>Acknowledgements</h2>
     <p class="justify">
-        We sincerely appreciate the authors of <a href="https://github.com/graphdeco-inria/gaussian-splatting">3DGS</a> and
-        <a href="https://github.com/nerfbaselines/nerfbaselines">NerfBaselines</a> for their great work and released code.
+        We sincerely appreciate the authors of <a href="https://github.com/graphdeco-inria/gaussian-splatting">3DGS</a>
+        and
+        <a href="https://github.com/nerfbaselines/nerfbaselines">NerfBaselines</a> for their great work and released
+        code.
         Please follow their licenses when using our code.
     </p>
 </section>
